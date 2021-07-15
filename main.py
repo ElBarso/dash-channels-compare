@@ -18,7 +18,7 @@ def main():
     for root, dirs, files in os.walk("C:/Users/Jonathan/Documents/Programmazione/Jupyter folder"):
         for file in [f for f in files if f.endswith(".mat")]:
             #parasites = file.split("g")[1].split("(")[0]
-            parasites = file.split("(")[0][-3:]
+            parasites = file.split("(")[0][-3:] #to modify
             if parasites == "008":
                 classes.append(0)
             elif parasites == "083":
