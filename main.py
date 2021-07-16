@@ -11,14 +11,15 @@ from sklearn.tree import DecisionTreeClassifier
 from dtreeviz.trees import dtreeviz
 
 
-def main():
+def dataload(root_path):
+
     df = None
     classes = []
     count = 0
     unique_par = []
 
-# recursively search into folder tree opening all matlab files ".mat"
-    for root, dirs, files in os.walk("C:/Users/Jonathan/Documents/Programmazione/Jupyter folder"):
+    # recursively search into folder tree opening all matlab files ".mat"
+    for root, dirs, files in os.walk(root_path):
         for file in [f for f in files if f.endswith(".mat")]:
 
             # define target string to search for and isolate, for each file name
@@ -53,14 +54,37 @@ def main():
     # remove not desired data Channele (Ch1 = 0, Ch2 = 1, Ch3 =2 , Ch4 = 3)
     # and the motor value column (4) indicating 'close' or 'far' position of
     # the motor from the chip (0 = close, 1= far)
-    df.drop([0,1,2,4], axis=1, inplace=True)
+    cols_to_remove = [0,1,2,4]
+    df.drop(cols_to_remove, axis=1, inplace=True)
+
+    if 4 in cols_to_remove:
+        print('\nMotor column removed.\n')
+    for i in range(4):
+        if i in cols_to_remove:
+            ch = i + 1
+            print('Ch' + '{} '.format(ch) + 'EXCLUDED from analysis.')
+        else:
+            ch = i + 1
+            print('Ch' + '{} '.format(ch) + 'USED for analysis.')
+
+
+
+    # create and print a useful legend for class identification
+    legend = dict(enumerate(unique_par))
+    print('\nClasses legend:')
+    print(legend)
+    print('\n')
+
+    return df, classes
+
+def dataClassification(df=None, classes=None):
 
     # extract features frm data and substitute NaN, -inf and +inf
     # with 'mean', 'min' and 'max', respectively
     ex_feat = extract_features(df,
                                column_id='id',
                                column_sort='time',
-                               #default_fc_parameters=MinimalFCParameters(),
+                               default_fc_parameters=MinimalFCParameters(),
                                #default_fc_parameters=EfficientFCParameters(),
                                #column_kind=None,
                                #column_value=None
@@ -70,10 +94,6 @@ def main():
     # prepare test dataset to train the Decision tree model
     X = ex_feat.to_numpy()
     y = np.array(classes)
-
-    # create and print a useful legend for class identification
-    legend = dict(enumerate(unique_par))
-    print(legend)
 
     # create, train and visualize the decision tree model
     tree = DecisionTreeClassifier(max_depth=4)
@@ -88,6 +108,11 @@ def main():
     ## filter relevant features from all the extracted
     #features_filtered = select_features(ex_feat, y)
     #print(features_filtered.head())
+
+def main():
+    path = "C:/Users/Jonathan/Documents/Programmazione/Jupyter folder"
+    df, classes = dataload(path)
+    dataClassification(df, classes)
 
 
 if __name__ == '__main__': main()
