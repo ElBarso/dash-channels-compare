@@ -12,37 +12,51 @@ from dtreeviz.trees import dtreeviz
 
 
 def main():
-    classes = []
     df = None
+    classes = []
     count = 0
     unique_par = []
 
+# recursively search into folder tree opening all matlab files ".mat"
     for root, dirs, files in os.walk("C:/Users/Jonathan/Documents/Programmazione/Jupyter folder"):
         for file in [f for f in files if f.endswith(".mat")]:
-            # parasites = file.split("g")[1].split("(")[0]
-            par_string = re.compile(r'_\w\d\d\d+')
-            parasites = par_string.findall(file)[0][2:]
+
+            # define target string to search for and isolate, for each file name
+            target_string = re.compile(r'_\w\d\d\d+')
+            parasites = target_string.findall(file)[0][2:]
+
+            # fill unique with unique target string values
+            # and store the corresponding index value of the
+            # item (used as class index) into classes
             if parasites in unique_par:
                 classes.append(unique_par.index(parasites))
             else:
                 unique_par.append(parasites)
                 classes.append(unique_par.index(parasites))
 
+            # load data file from selected path and import it as pandas dataframe,
+            # add the 'id' and 'time' columns later used for features extraction
             data_tmp = loadmat(os.path.join(root, file))
             df_loaded = pd.DataFrame(data_tmp['meas_plot_array']).transpose()
-            df_loaded.drop(4, axis=1, inplace=True)
-            df_loaded.drop(0, axis=1, inplace=True)
             dim = len(df_loaded.iloc[:, 1])
             df_loaded['id'] = count * np.ones(dim)
             time = np.array(range(0, dim))
             df_loaded['time'] = time
 
+            #build the dataframe concatenating all opened files
             if count != 0:
                 df = pd.concat([df, df_loaded], axis=0)
             else:
                 df = df_loaded
             count = count + 1
 
+    # remove not desired data Channele (Ch1 = 0, Ch2 = 1, Ch3 =2 , Ch4 = 3)
+    # and the motor value column (4) indicating 'close' or 'far' position of
+    # the motor from the chip (0 = close, 1= far)
+    df.drop([0,1,2,4], axis=1, inplace=True)
+
+    # extract features frm data and substitute NaN, -inf and +inf
+    # with 'mean', 'min' and 'max', respectively
     ex_feat = extract_features(df,
                                column_id='id',
                                column_sort='time',
@@ -51,16 +65,19 @@ def main():
                                #column_kind=None,
                                #column_value=None
                                )
-
     impute(ex_feat)
+
+    # prepare test dataset to train the Decision tree model
     X = ex_feat.to_numpy()
     y = np.array(classes)
+
+    # create and print a useful legend for class identification
     legend = dict(enumerate(unique_par))
     print(legend)
 
+    # create, train and visualize the decision tree model
     tree = DecisionTreeClassifier(max_depth=4)
     model = tree.fit(X,y)
-
     viz = dtreeviz(tree,
                    X,
                    y,
@@ -68,7 +85,8 @@ def main():
                    feature_names=ex_feat.columns)
     viz.view()
 
-    features_filtered = select_features(ex_feat, y)
+    ## filter relevant features from all the extracted
+    #features_filtered = select_features(ex_feat, y)
     #print(features_filtered.head())
 
 
