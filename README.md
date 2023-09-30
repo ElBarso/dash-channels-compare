@@ -28,7 +28,7 @@ Create an interactive dashboard to comapre plots of a four channel sensor output
 The dashboard run on a local server created using Dash, accessible using any browser. Once lunched the __main__.py file, you simply need to open the link generated on the local host.
 
 - Python code lunching the web server:
-    *webapp.run_server(port=os.getenv("PORT", "9999"))*
+     ```webapp.run_server(port=os.getenv("PORT", "9999"))```
 
 - Example of the output url to open:
     *Running on http://127.0.0.1:9999*
