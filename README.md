@@ -17,7 +17,7 @@ An interactive dashboard to compare signal curves collected from a four channels
 
 Create an interactive dashboard to comapre plots of a four channel sensor output. Separately plots all channels curve's and allows to select one curve for channels to make a direct comparison on a dedicated interactive plot.
 
-I used the code to plot and compare measurements during the optimization phase of TMek, a rapid diagnostic test for malaria developed at Politecnico di Milano ([latest project scientific paper](https://ieeexplore.ieee.org/abstract/document/9924602)). 
+I used the code to plot and compare measurements during the optimization phase of TMek, a rapid diagnostic test for malaria, developed at Politecnico di Milano ([latest project scientific paper](https://ieeexplore.ieee.org/abstract/document/9924602)). 
 
 ## Features
 
@@ -40,7 +40,7 @@ The code was written using the folowing packages version. Some features may not 
 
 At present the code only run with .mat extention files having the same structure of those reported in folder \data.
 
-*package name list and versions*
+*packages name list and versions*
 
 - dash             2.13.0
 - numpy            1.22.3
