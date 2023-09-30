@@ -9,10 +9,7 @@ An interactive dashboard to compare signal curves collected from a four channels
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ## Project Overview
 
@@ -39,7 +36,7 @@ The code was written using the folowing packages version. Some features may not 
 
 At present the code only run with .mat extention files having the same structure of those reported in folder \data\example_measures.
 
-#### package-name     version
+*package name list and versions*
 
 - dash             2.13.0
 - numpy            1.22.3
