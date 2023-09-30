@@ -49,7 +49,7 @@ def load_files(input_path, file_extension):
             df_loaded = pd.DataFrame(data_tmp['meas_plot_array']).transpose()
 
             # remove unuseful column containing motor position info
-            df_loaded.drop(4, axis=1, inplace=True)
+            df_loaded.drop(4, axis=1, inplace=True)            
 
             # Add and 'id' curve for identification
             dim = len(df_loaded.iloc[:, 1])
@@ -339,20 +339,3 @@ def webapp_creator(measures, tagToColor_dict):
         return figure
 
     return webapp
-
-
-if __name__ == '__main__':
-
-    # extension and folder path of the files to plot
-    file_extension = ".mat"
-    input_path = r"C:\Users\j.barsotti\Downloads\BeadsData\2022-01-20"
-    # input_path = r"C:\Users\j.barsotti\Downloads"
-
-    # Load the files to plot and return plotly.Graph_Objects and a dictionary containing loaded file info
-    # used to set up the plot layout
-    measures, tagToColor_dictionary = load_files(input_path, file_extension)
-
-    # Create the dash web app, fill it with contents to plot and set the page layout
-    # The lunch the server
-    webapp = webapp_creator(measures, tagToColor_dictionary)
-    webapp.run_server(port=os.getenv("PORT", "9999"))
