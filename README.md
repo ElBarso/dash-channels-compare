@@ -1,6 +1,6 @@
 # Interactive dashboard for signal comparison
 
-[An interactive dashboard to compare signal curves collected from a four channels sensor.]
+An interactive dashboard to compare signal curves collected from a four channels sensor.
 
 ## Table of Contents
 
@@ -21,25 +21,23 @@ Create an interactive dashboard to comapre plots of a four channel sensor output
 ## Features
 
 - automatically and recursively plot .mat files starting from a root direcotry
-- create interactive dashboard to look at single channels results and compare different channels results interactively
+- create interactive dashboard to look at single channels results and compares different channels results interactively
 
 ## Getting Started
 
-The dashboard run on a local server created using Dash, accessible using any browserOnce lunched the __main__.py file, you simply need to open the link generated on the local host.
+The dashboard run on a local server created using Dash, accessible using any browser. Once lunched the __main__.py file, you simply need to open the link generated on the local host.
 
-Python code lunching thh web server:
+- Python code lunching the web server:
+    *webapp.run_server(port=os.getenv("PORT", "9999"))*
 
-webapp.run_server(port=os.getenv("PORT", "9999"))
-
-Example of the output url to open:
-
-Running on http://127.0.0.1:9999
-
-To use this code you need .mat file input with the same structure of those reported in folder \data\example_measures.
+- Example of the output url to open:
+    *Running on http://127.0.0.1:9999*
 
 ### Prerequisites
 
 The code was written using the folowing packages version. Some features may not work on different versions.
+
+At present the code only run with .mat extention files having the same structure of those reported in folder \data\example_measures.
 
 #### package-name     version
 
@@ -54,7 +52,5 @@ The code was written using the folowing packages version. Some features may not 
 To use the code simply clone the repo and lunch the __main__.py file
 
 # License
-[Specify the license under which your project is distributed. If you're unsure, you can use an open-source license like MIT or Apache 2.0.]
 
-# Acknowledgments
-[Give credit to any individuals, projects, or resources that you used or were inspired by while creating your project.]
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
