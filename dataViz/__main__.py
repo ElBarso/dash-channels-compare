@@ -6,7 +6,7 @@ if __name__ == '__main__':
 
     # extension and folder path of the files to plot
     file_extension = ".mat"
-    input_path = r".\data\example_measures"
+    input_path = r".\data"
 
     # Load the files to plot and return plotly.Graph_Objects and a dictionary containing loaded file info
     # used to set up the plot layout

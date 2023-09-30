@@ -2,6 +2,8 @@
 
 An interactive dashboard to compare signal curves collected from a four channels sensor.
 
+![Alt text](images/demo.png)
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
@@ -36,7 +38,7 @@ The dashboard run on a local server created using Dash, accessible using any bro
 
 The code was written using the folowing packages version. Some features may not work on different versions.
 
-At present the code only run with .mat extention files having the same structure of those reported in folder \data\example_measures.
+At present the code only run with .mat extention files having the same structure of those reported in folder \data.
 
 *package name list and versions*
 
