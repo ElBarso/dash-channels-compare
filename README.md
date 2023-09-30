@@ -15,9 +15,9 @@ An interactive dashboard to compare signal curves collected from a four channels
 
 ## Project Overview
 
-Create an interactive dashboard to comapre plots of a four channel sensor output. Separately plots all channels curve's and allows to select one curve for channels to make a direct comparison on a dedicated interactive plot.
+Create an interactive dashboard to compare the output of a four-channel sensor. Separately plots each channel curves. Through a dedicated interactive plot, enables direct comparison of tracks from different channels selecting them with a simple click.
 
-I used the code to plot and compare measurements during the optimization phase of TMek, a rapid diagnostic test for malaria, developed at Politecnico di Milano ([latest project scientific paper](https://ieeexplore.ieee.org/abstract/document/9924602)). 
+I used this code to quickly plot and compare measurements during the optimization phase of TMek, a rapid diagnostic test for malaria, developed at Politecnico di Milano ([latest project scientific paper](https://ieeexplore.ieee.org/abstract/document/9924602)). 
 
 ## Features
 
@@ -26,7 +26,7 @@ I used the code to plot and compare measurements during the optimization phase o
 
 ## Getting Started
 
-The dashboard run on a local server created using Dash, accessible using any browser. Once lunched the __main__.py file, you simply need to open the link generated on the local host.
+The dashboard runs on a local server created using Dash. It is accessible using any browser. After lunching the __main__.py file, simply open the link to the local host tha will be generated.
 
 - Python code lunching the web server:
      ```webapp.run_server(port=os.getenv("PORT", "9999"))```
@@ -36,7 +36,7 @@ The dashboard run on a local server created using Dash, accessible using any bro
 
 ### Prerequisites
 
-The code was written using the folowing packages version. Some features may not work on different versions.
+The code was written using the following packages versions. Some features may not work on different versions of the packages.
 
 At present the code only run with .mat extention files having the same structure of those reported in folder \data.
 
