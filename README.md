@@ -36,9 +36,10 @@ The dashboard runs on a local server created using Dash. It is accessible using 
 
 ### Prerequisites
 
-The code was written using the following packages versions. Some features may not work on different versions of the packages.
-
 At present the code only run with .mat extention files having the same structure of those reported in folder \data.
+
+The code was written using the following packages versions. Some features may not work on different versions of the packages.
+The package list below can be installed using the requirements.txt file.
 
 *packages name list and versions*
 
