@@ -5,9 +5,8 @@ import os
 import dash
 from dash import dcc
 from dash import html
-from dash import Output, Input, State
+from dash import Output, Input
 import plotly.graph_objs as go
-import plotly.offline as pyo
 import re
 
 
@@ -192,7 +191,7 @@ def webapp_creator(measures, tagToColor_dict):
 
         # Curve selection container: START
         html.Pre("""
-        
+
         """),
         html.Div([
             html.Div([
@@ -204,10 +203,8 @@ def webapp_creator(measures, tagToColor_dict):
                              multi=True,
                              value=None
                              )
-            ], style={'width': '20%'}),
-        ]),
-        html.Pre([]),
-        html.Div([
+            ], style={'width': '100%', 'vertical-align': 'top', 'margin-top':'0%'}),
+            html.Pre(),
             html.Div(id='instructions-head',
                                     children='Curve comparison: \n',
                                     style={'padding': '10px 20px',
@@ -225,15 +222,15 @@ def webapp_creator(measures, tagToColor_dict):
                                            'font-size': 16,
                                            'background-color': 'ghostwhite'}
                                     )
-        ], style={'width': '20%','display':'inline-block','vertical-align': 'top'}),
+            ], style={'width': '20%','display':'inline-block','vertical-align': 'top', 'margin-left':'10%', 'margin-top':'3%'}),
             html.Div([
                 dcc.Graph(id='selected-graph',
                           figure={'data': [go.Scatter(x=[0, 1],
                                                       y=[0, 1],
                                                       )],
                                   'layout': go.Layout(title='Example Curve: click on curves to compare')}
-                          )], style={'width': 850, 'display': 'inline-block', 'vertical-align': 'top'})
-            ], style={'display': 'inline-block'})
+                          )], style={'width': 800, 'display': 'inline-block', 'margin-left':'2%', 'margin-top':'-5%'})
+            ], style={'display': 'inline-block', 'margin-left':'5%'})
             # Curve selection container: END
 
 
