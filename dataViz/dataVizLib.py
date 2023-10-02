@@ -12,6 +12,7 @@ import re
 
 def tag_id(string, reg_exp=r'\('):
     """
+    Splits files name to extract a tag id based on a regex pattern.
 
     :param reg_exp: The regular expression applied for the string split.
     :type reg_exp: regular expression.
@@ -77,7 +78,6 @@ def load_files(input_path, file_extension):
     for num, vtag in enumerate(set(tags_list)):
         tagToColor_dict[str(vtag)] = num
 
-    # colors = ['CornflowerBlue', 'Crimson', 'LimeGreen', 'Black', 'mediumpurple',]
     colors = ['mediumaquamarine', 'orangered', 'royalblue', 'blueviolet' ,  'darkturquoise']
 
     for key, color in zip(tagToColor_dict.keys(), colors[:len(tagToColor_dict.keys())]):
@@ -145,10 +145,7 @@ def webapp_creator(measures, tagToColor_dict):
     webapp = dash.Dash()
 
     plot_bgcolor = 'white'
-    paper_bgcolor = 'white'
-    # plot_bgcolor = 'ivory'
-    # paper_bgcolor = 'aliceblue'
-    
+    paper_bgcolor = 'white'    
 
     webapp.layout = html.Div([
         # Graphs container #1: START
@@ -266,10 +263,7 @@ def webapp_creator(measures, tagToColor_dict):
                  ]
 
         return value
-
-
-    # @webapp.callback(Output('selections-comparisons', 'figure'),
-    #                  [Input('ch1', 'clickData'), Input('ch3', 'clickData')])
+    
 
     @webapp.callback(Output('selected-graph', 'figure'),
                      [Input('selected-list', 'value')])
