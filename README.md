@@ -1,6 +1,6 @@
 # Interactive dashboard for sensors channels comparison
 
-An interactive dashboard to compare signal curves collected from a four channels sensor.
+An interactive dashboard to compare signal curves collected from a four-channels sensor.
 
 ![Alt text](images/demo.png)
 
