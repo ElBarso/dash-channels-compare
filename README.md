@@ -17,7 +17,7 @@ An interactive dashboard to compare signal curves collected from a four-channels
 
 Create an interactive dashboard to compare the output of a four-channel sensor. Separately plots each channel curves. Through a dedicated interactive plot, enables direct comparison of tracks from different channels selecting them with a simple click.
 
-I used this code to quickly plot and compare measurements during the optimization phase of TMek, a rapid diagnostic test for malaria, developed at Politecnico di Milano ([latest project scientific paper](https://ieeexplore.ieee.org/abstract/document/9924602)). 
+I developed this code to quickly plot and compare measurements during the optimization of TMek, an electronic rapid diagnostic test for malaria, developed at Politecnico di Milano ([latest TMek scientific paper](https://ieeexplore.ieee.org/abstract/document/9924602)). 
 
 ## Features
 
